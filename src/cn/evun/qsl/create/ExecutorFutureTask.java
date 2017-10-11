@@ -1,12 +1,16 @@
-package cn.evun.qsl;
+package cn.evun.qsl.create;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
-
-public class ExecutorFuture {
+/**
+ * 使用FutureTask + Callable 创建线程
+ * @author Qin.SiLiang
+ *
+ */
+public class ExecutorFutureTask {
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 		ExecutorService executorPool = Executors.newFixedThreadPool(2);
 		MyFutureTask futureTask1 = new MyFutureTask(new MyTask("任务1"));

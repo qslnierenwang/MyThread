@@ -1,4 +1,4 @@
-package cn.evun.qsl;
+package cn.evun.qsl.threadLocal;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,12 +9,12 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
 
 /**
- * 能够记录每个线程的执行时长的线程池
+ * 使用ThreadLoal来创建记录每个线程的执行事件
  * @author Qin.SiLiang
  *
  */
-public class TimingThreadPool extends ThreadPoolExecutor{
-	
+public class ThreadLocalTest extends ThreadPoolExecutor{
+
 	//将开始时间记录在ThreadLocal中，则在线程结束的时候可以获得到开始时间
 	private final ThreadLocal<Map> threadLocalMap = new ThreadLocal<Map>();
 	
@@ -44,11 +44,7 @@ public class TimingThreadPool extends ThreadPoolExecutor{
 		}
 	}
 	
-//	protected void teminated(){
-//		log.info(String.format("", args));
-//	}
-	
-	public TimingThreadPool(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit,
+	public ThreadLocalTest(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit,
 			BlockingQueue<Runnable> workQueue) {
 		super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue);
 	}
